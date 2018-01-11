@@ -2,9 +2,12 @@
 Problem Statement: The initial co-ordinate of a fighter plane is given which is
                    supposed to hit a bombing site. The bombing site is moving
                    and its co-ordinates at 1 second interval are given. If the
-                   velocity of the plane is __kmph and it is always directed
-                   towards the bombing site, determine whether the fighter
-                   plane will hit the bombing site successfully or not.
+                   velocity of the bomb is 20 kmph and it is always directed
+                   towards the bombing site, determine whether the bomb
+                   will hit the bombing site successfully or not.
+
+Note: The bomb would be said to successfully hit the target if it is within
+      10km proximity of the target at point of time.
 """
 import math
 
@@ -14,7 +17,7 @@ BOMBING_COORDINATES = [(80, 0), (90, -2), (99, -5), (108, -9), (116, -15),
 
 FIGHTER_INIT = (0, 50)
 
-FIGHTER_VELOCITY = 20
+BOMB_VELOCITY = 20  # in kmph
 
 INFINITY = math.atan(math.tan(math.pi / 2))
 
@@ -32,28 +35,39 @@ def get_direction(c1, c2):
     return(slope)
 
 
+def eucledian_distance(c1, c2):
+    """
+    Returns eucledian distance between two points with coordinates c1 and c2
+    """
+    return(math.sqrt((c2[1] - c1[1])**2 + (c2[0] - c1[0])**2))
+
+
 def plane_hits():
     """
-    The plane will hit the bombing site if at the end its coordinates co-incide
-    with the bombing site's
+    The bomb will hit the bombing site if at the end its coordinates are in
+    a 10km proximity range from the target.
     """
-    fighter_coordinate = FIGHTER_INIT  # coordindates of the fighter plane
+    bomb_coordinate = FIGHTER_INIT  # coordindates of the bomb
     for i, c in enumerate(BOMBING_COORDINATES):
         if i >= len(BOMBING_COORDINATES) - 1:
+            print("The bomb misses the target")
             return(False)
         # Find theta, the direction of vector between fighter-plane --> bombing
         # site and update fighter coordinate
-        direction = get_direction(fighter_coordinate, c)
-        fighter_x = fighter_coordinate[0] + (FIGHTER_VELOCITY * 1) * math.cos(direction)
-        fighter_y = fighter_coordinate[1] + (FIGHTER_VELOCITY * 1) * math.sin(direction)
-        fighter_coordinate = (fighter_x, fighter_y)
-        if round(fighter_coordinate[0]) == BOMBING_COORDINATES[i + 1][0] and round(fighter_coordinate[1]) == BOMBING_COORDINATES[i + 1][1]:
+        direction = get_direction(bomb_coordinate, c)
+        fighter_x = bomb_coordinate[0] + (BOMB_VELOCITY * 1) * math.cos(direction)
+        fighter_y = bomb_coordinate[1] + (BOMB_VELOCITY * 1) * math.sin(direction)
+        bomb_coordinate = (fighter_x, fighter_y)
+
+        # Check if the bomb hits the target
+        if eucledian_distance(bomb_coordinate,
+                              BOMBING_COORDINATES[i + 1]) < 10:
+            print("The fighter plane destroys the bombing site at t=%ds from "
+                  "initialization" % (i+1))
             return(True)
+    print("The plane misses the target")
     return(False)
 
 
 if __name__ == '__main__':
-    if plane_hits():
-        print("The Figher plane hits the target")
-    else:
-        print("The Fighter planes would miss the target")
+    plane_hits()
