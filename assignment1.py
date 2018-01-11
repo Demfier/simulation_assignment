@@ -52,12 +52,12 @@ def plane_hits():
         if i >= len(BOMBING_COORDINATES) - 1:
             print("The bomb misses the target")
             return(False)
-        # Find theta, the direction of vector between fighter-plane --> bombing
-        # site and update fighter coordinate
+        # Find theta, the direction of vector between bomb --> bombing
+        # site and update bomb's coordinate
         direction = get_direction(bomb_coordinate, c)
-        fighter_x = bomb_coordinate[0] + (BOMB_VELOCITY * 1) * math.cos(direction)
-        fighter_y = bomb_coordinate[1] + (BOMB_VELOCITY * 1) * math.sin(direction)
-        bomb_coordinate = (fighter_x, fighter_y)
+        bomb_x = bomb_coordinate[0] + (BOMB_VELOCITY * 1) * math.cos(direction)
+        bomb_y = bomb_coordinate[1] + (BOMB_VELOCITY * 1) * math.sin(direction)
+        bomb_coordinate = (bomb_x, bomb_y)
 
         # Check if the bomb hits the target
         if eucledian_distance(bomb_coordinate,
