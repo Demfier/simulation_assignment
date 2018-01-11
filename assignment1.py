@@ -1,4 +1,6 @@
 """
+Author: Gaurav Sahu, 11/01/2018 20:07:23
+
 Problem Statement: The initial co-ordinate of a fighter plane is given which is
                    supposed to hit a bombing site. The bombing site is moving
                    and its co-ordinates at 1 second interval are given. If the
