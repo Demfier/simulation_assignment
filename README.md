@@ -9,7 +9,7 @@ The initial co-ordinate of a fighter plane is given which is supposed to hit a b
 
 **Note**: The bomb would be said to successfully hit the target if it is within 10km proximity of the target at a point of time.
 
-  ## 2. [Simulation of an Intventory system](assignment2.py):
+  ## 2. [Simulation of an Inventory system](assignment2.py):
 
 Retail store selling automobile types.<br>
   **Aim**: To adopt an optimum policy for ordering new supplies.
