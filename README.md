@@ -18,19 +18,19 @@ Retail store selling automobile types.<br>
   - D = Demands per day
   - P = Reorder point (constant)
   - Q = Reorder quantity (fixed)
-  - S = Stock<br>
+  - S = Stock
 
    **Rules**:
-    - *If* Stock <= P, order Q items
-    - *If* D > S => (sales loss) *else* => carry_over cost
+   - *If* Stock <= P, order Q items
+   - *If* D > S => (sales loss) *else* => carry_over cost
 
   **Assumptions**:
-    1. Lead Time = 3 days (If order placed on 10th, will get on 13th)
-    2. Carrying cost per day per unit = 0.75 Rs.
-    3. Loss per unit out of stock = 18 Rs.
-    4. Ordering cost per order = 75 Rs. (inclusive of transportation cost)
-    5. Demand in a day is between 0-99
-    6. There is never more than one replenishment order
-    7. Initial Conditions: S = 115 units, no outstanding order<br>
-    Select the best policy out of the 5 given alternatives after operating for 180 days.
+  1. Lead Time = 3 days (If order placed on 10th, will get on 13th)
+  2. Carrying cost per day per unit = 0.75 Rs.
+  3. Loss per unit out of stock = 18 Rs.
+  4. Ordering cost per order = 75 Rs. (inclusive of transportation cost)
+  5. Demand in a day is between 0-99
+  6. There is never more than one replenishment order
+  7. Initial Conditions: S = 115 units, no outstanding order<br>
+  Select the best policy out of the 5 given alternatives after operating for 180 days.
 
